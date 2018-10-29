@@ -1,4 +1,4 @@
-package com.aditya.lenovo.jadwalbolarevisi.Main.favmatch
+package com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganFav
 
 import com.aditya.lenovo.jadwalbolarevisi.Entitas.Event
 import com.aditya.lenovo.jadwalbolarevisi.Entitas.repository.LocalRepositoryImpl

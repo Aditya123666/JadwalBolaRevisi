@@ -1,13 +1,12 @@
-package com.aditya.lenovo.jadwalbolarevisi.Main.favmatch
+package com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganTerakhir
 
 import com.aditya.lenovo.jadwalbolarevisi.Entitas.Event
 
-interface FavoriteMatchContract {
+interface MatchContract {
     interface View{
         fun hideLoading()
         fun showLoading()
         fun displayFootballMatch(matchList:List<Event>)
-        fun hideSwipeRefresh()
     }
 
     interface Presenter{

@@ -4,9 +4,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.aditya.lenovo.jadwalbolarevisi.R
 
-import com.aditya.lenovo.jadwalbolarevisi.Main.favmatch.FavoriteMatchFragment
-import com.aditya.lenovo.jadwalbolarevisi.Main.lastmatch.LastMatchFragment
-import com.aditya.lenovo.jadwalbolarevisi.Main.upcomingmatch.UpcomingMatchFragment
+import com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganFav.FavoriteMatchFragment
+import com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganTerakhir.LastMatchFragment
+import com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganSelanjutnya.UpcomingMatchFragment
 import kotlinx.android.synthetic.main.home_activity.*
 
 class MainActivity : AppCompatActivity(), MainContract.View{

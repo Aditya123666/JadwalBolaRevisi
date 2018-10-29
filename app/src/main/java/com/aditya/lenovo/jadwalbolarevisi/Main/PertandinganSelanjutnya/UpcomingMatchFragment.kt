@@ -1,4 +1,4 @@
-package com.aditya.lenovo.jadwalbolarevisi.Main.lastmatch
+package com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganSelanjutnya
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,38 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.aditya.lenovo.jadwalbolarevisi.R
-
 import com.aditya.lenovo.jadwalbolarevisi.adapter.Adapter
 import com.aditya.lenovo.jadwalbolarevisi.Entitas.Event
 import com.aditya.lenovo.jadwalbolarevisi.Entitas.repository.MatchRepositoryImpl
 import com.aditya.lenovo.jadwalbolarevisi.extensions.hide
 import com.aditya.lenovo.jadwalbolarevisi.extensions.show
+import com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganTerakhir.MatchContract
 import com.aditya.lenovo.jadwalbolarevisi.api.FootballApiService
 import com.aditya.lenovo.jadwalbolarevisi.api.FootballRest
 import com.aditya.lenovo.jadwalbolarevisi.scheduler.AppSchedulerProvider
-import kotlinx.android.synthetic.main.fragment_upcoming_match.*
+import kotlinx.android.synthetic.main.fragment_last_match.*
 
-class LastMatchFragment : Fragment(), MatchContract.View {
+class UpcomingMatchFragment : Fragment(), MatchContract.View {
 
-    lateinit var mPresenter : LastMatchPresenter
+    lateinit var mPresenter : UpcomingMatchPresenter
 
     private var matchLists : MutableList<Event> = mutableListOf()
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val service = FootballApiService.getClient().create(FootballRest::class.java)
-        val request = MatchRepositoryImpl(service)
-        val scheduler = AppSchedulerProvider()
-        mPresenter = LastMatchPresenter(this, request, scheduler)
-        mPresenter.getFootballMatchData()
-    }
-
-
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_last_match, container, false)
-    }
 
     override fun hideLoading() {
         mainProgressBar.hide()
@@ -53,9 +37,23 @@ class LastMatchFragment : Fragment(), MatchContract.View {
     override fun displayFootballMatch(matchList: List<Event>) {
         matchLists.clear()
         matchLists.addAll(matchList)
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         rvFootball.layoutManager = layoutManager
         rvFootball.adapter = Adapter(matchList, context)
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+
+        return inflater.inflate(R.layout.fragment_upcoming_match, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val service = FootballApiService.getClient().create(FootballRest::class.java)
+        val request = MatchRepositoryImpl(service)
+        val scheduler = AppSchedulerProvider()
+        mPresenter = UpcomingMatchPresenter(this, request, scheduler)
+        mPresenter.getFootballMatchData()
+    }
 }

@@ -1,18 +1,19 @@
-package com.aditya.lenovo.jadwalbolarevisi.Main.lastmatch
+package com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganSelanjutnya
 
 import com.aditya.lenovo.jadwalbolarevisi.Entitas.repository.MatchRepositoryImpl
+import com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganTerakhir.MatchContract
 import com.aditya.lenovo.jadwalbolarevisi.scheduler.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 
-class LastMatchPresenter(val mView :  MatchContract.View,
-                         val matchRepositoryImpl: MatchRepositoryImpl,
-                         val scheduler: SchedulerProvider) : MatchContract.Presenter{
+class UpcomingMatchPresenter(val mView: MatchContract.View,
+                             val matchRepositoryImpl: MatchRepositoryImpl,
+                             val scheduler: SchedulerProvider) : MatchContract.Presenter {
 
     val compositeDisposable = CompositeDisposable()
 
     override fun getFootballMatchData() {
         mView.showLoading()
-        compositeDisposable.add(matchRepositoryImpl.getFootballMatch("4328")
+        compositeDisposable.add(matchRepositoryImpl.getUpcomingMatch("4328")
                 .observeOn(scheduler.ui())
                 .subscribeOn(scheduler.io())
                 .subscribe{

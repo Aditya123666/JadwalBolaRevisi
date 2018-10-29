@@ -1,4 +1,4 @@
-package com.aditya.lenovo.jadwalbolarevisi.Main.favmatch
+package com.aditya.lenovo.jadwalbolarevisi.Main.PertandinganFav
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
