@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JadwalBolaRevisi</string>
+
+    <string name="last_match">Pertandingan Terakhir</string>
+    <string name="upcoming_match">Pertandingan Selanjutnya</string>
+    <string name="saved_match">Simpan Pertandingan</string>
+</resources>
